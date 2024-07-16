@@ -99,7 +99,7 @@ const SideNavbar = ({ isActive, setActive, loginUser }) => {
                 <>
                   {/* Home */}
                   <NavLink
-                    to="worker-home"
+                    to="send-money"
                     end
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-200 rounded-lg   hover:text-gray-700 ${
@@ -116,10 +116,10 @@ const SideNavbar = ({ isActive, setActive, loginUser }) => {
                       alt=""
                     />
 
-                    <span className="mx-4 font-medium">Home</span>
+                    <span className="mx-4 font-medium">Send Money</span>
                   </NavLink>
                   <NavLink
-                    to="worker-tasklist"
+                    to="cash-out"
                     end
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-200 rounded-lg   hover:text-gray-700 ${
@@ -136,10 +136,10 @@ const SideNavbar = ({ isActive, setActive, loginUser }) => {
                       alt=""
                     />
 
-                    <span className="mx-4 font-medium">agent</span>
+                    <span className="mx-4 font-medium">CashOut</span>
                   </NavLink>
                   <NavLink
-                    to="worker-submission"
+                    to="cash-in"
                     end
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-200 rounded-lg   hover:text-gray-700 ${
@@ -156,10 +156,10 @@ const SideNavbar = ({ isActive, setActive, loginUser }) => {
                       alt=""
                     />
 
-                    <span className="mx-4 font-medium">My Submission</span>
+                    <span className="mx-4 font-medium">CashIn</span>
                   </NavLink>
                   <NavLink
-                    to="withdrawForm"
+                    to="balance-inquiry"
                     end
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-200 rounded-lg   hover:text-gray-700 ${
@@ -176,7 +176,27 @@ const SideNavbar = ({ isActive, setActive, loginUser }) => {
                       alt=""
                     />
 
-                    <span className="mx-4 font-medium">Withdrawals</span>
+                    <span className="mx-4 font-medium">Balance Inquiry</span>
+                  </NavLink>
+                  <NavLink
+                    to="transactions-history"
+                    end
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-200 rounded-lg   hover:text-gray-700 ${
+                        isActive
+                          ? "bg-gray-200 rounded-lg  text-gray-700"
+                          : "text-black"
+                      }`
+                    }
+                  >
+                    {/* <PiHandWithdrawBold className="w-5 h-5" /> */}
+                    <img
+                      className="w-7 h-7"
+                      src="https://i.ibb.co/nC9JB3Z/free-withdrawal-1795307-1522572.png"
+                      alt=""
+                    />
+
+                    <span className="mx-4 font-medium">Transactions History</span>
                   </NavLink>
                 </>
               ) : (

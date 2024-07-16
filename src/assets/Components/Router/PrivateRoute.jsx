@@ -13,4 +13,4 @@ const PrivateRoute = ({ children }) => {
     return token ? <Navigate to='/login' state={location.pathname} replace='true' />  : <Navigate to="/login" />;
 };
 
-export default PrivateRoute; 
+export default PrivateRoute;

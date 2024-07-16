@@ -34,7 +34,15 @@ const AdminDashboard = () => {
         setUsers(
           users.map((user) =>
             user._id === userId
-              ? { ...user, status: "active", balance: 40 }
+              ? {
+                  ...user,
+                  status: "active",
+                  balance:
+                    user.role === "user"
+                      ? 40
+                      : user.role === "agent"
+                      && 1000
+                }
               : user
           )
         );
@@ -45,12 +53,14 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col justify-center lg:ml-16">
-      <h2 className="text-center lg:mb-10 text-3xl font-semibold">
+    <div className="md:h-screen md:mt-10 lg:mt-0 md:ml-12 flex flex-col justify-center lg:ml-16">
+      <h2 className="mt-20 md:mt-0 text-center lg:mb-10 text-3xl font-semibold">
         Admin Dashboard
       </h2>
 
-      <h3 className="text-xl font-semibold mb-2">Pending Users:</h3>
+      <h3 className="mt-6 md:mt-0 text-xl font-semibold mb-2">
+        Pending Users:
+      </h3>
       <div className="overflow-x-auto mb-10">
         <table className="table">
           <thead>
@@ -58,21 +68,30 @@ const AdminDashboard = () => {
               <th></th>
               <th>Name</th>
               <th>Email</th>
+              <th>Role</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
-          {users
-            .filter((user) => user.status === "pending") 
-            .map((user,idx) => (
-              <tr key={user._id}>
-                <th>{idx+1}</th>
-                <td>{user.name}</td>
-                <td> {user.email}</td>
-                <td> {user.status}</td>
-                <td><button className="border px-4 py-2 rounded-lg border-blue-600 bg-blue-500 text-white hover:border-blue-700 hover:bg-blue-700" onClick={() => handleApprove(user._id)}>Approve</button></td>
-              </tr>
-            ))}
+            {users
+              .filter((user) => user.status === "pending")
+              .map((user, idx) => (
+                <tr key={user._id}>
+                  <th>{idx + 1}</th>
+                  <td>{user.name}</td>
+                  <td> {user.email}</td>
+                  <td> {user.role}</td>
+                  <td> {user.status}</td>
+                  <td>
+                    <button
+                      className="border px-4 py-2 rounded-lg border-blue-600 bg-blue-500 text-white hover:border-blue-700 hover:bg-blue-700"
+                      onClick={() => handleApprove(user._id)}
+                    >
+                      Approve
+                    </button>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
@@ -84,15 +103,19 @@ const AdminDashboard = () => {
               <th></th>
               <th>Name</th>
               <th>Email</th>
+              <th>Role</th>
+              <th>Balance</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
-          {users.map((user,idx) => (
+            {users.map((user, idx) => (
               <tr key={user._id}>
-                <th>{idx+1}</th>
+                <th>{idx + 1}</th>
                 <td>{user.name}</td>
                 <td> {user.email}</td>
+                <td> {user.role}</td>
+                <td> {user.balance}</td>
                 <td> {user.status}</td>
               </tr>
             ))}
