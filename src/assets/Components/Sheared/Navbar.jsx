@@ -81,7 +81,7 @@ const Navbar = () => {
         {auth ? (
           <>
             <button className="border px-4 py-2 rounded-lg border-black hover:bg-rose-500 hover:border-rose-500 hover:text-white font-semibold" onClick={handleLogout}>Signout</button>
-          </> 
+          </>
         ) : (
           <>
             <div className="flex items-center justify-center gap-4">

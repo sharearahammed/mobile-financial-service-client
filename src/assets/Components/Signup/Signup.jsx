@@ -20,7 +20,7 @@ const Signup = () => {
     try {
       setLoading(true);
       await axiosCommon.post("/register", {
-        name,
+        name, 
         pin,
         mobileNumber,
         email,
