@@ -12,7 +12,7 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
 
     const handleLogin = async () => {
-        try {
+        try { 
             setLoading(true);
             const response = await axiosCommon.post('/login', { mobileOrEmail, pin });
             localStorage.setItem('token', response.data.token);
