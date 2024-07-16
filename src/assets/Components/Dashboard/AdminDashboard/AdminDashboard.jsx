@@ -63,7 +63,7 @@ const AdminDashboard = () => {
           </thead>
           <tbody>
           {users
-            .filter((user) => user.status === "pending")
+            .filter((user) => user.status === "pending") 
             .map((user,idx) => (
               <tr key={user._id}>
                 <th>{idx+1}</th>
