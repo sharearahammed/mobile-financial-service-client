@@ -7,7 +7,7 @@ const LoadingSpinner = ({ smallHeight }) => {
       className={` ${smallHeight ? 'h-[250px]' : 'h-[70vh]'}
       flex 
       flex-col 
-      justify-center 
+      justify-center  
       items-center `}
     >
       <RiseLoader size={20} color='blue' />
