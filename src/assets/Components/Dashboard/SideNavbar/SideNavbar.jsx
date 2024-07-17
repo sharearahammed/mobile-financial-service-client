@@ -5,14 +5,14 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AiOutlineBars } from "react-icons/ai";
 
 const SideNavbar = ({ isActive, setActive, loginUser }) => {
-  const { setLoading,setAuth } = useAuth();
-//   const axiosCommon = useAxiosCommon();
+  const { setLoading, setAuth } = useAuth();
+  //   const axiosCommon = useAxiosCommon();
   const navigate = useNavigate();
-  
+
   const handleLogout = () => {
-    setLoading(false)
+    setLoading(false);
     localStorage.removeItem("token");
-    setAuth(false)
+    setAuth(false);
     navigate("/login");
   };
 
@@ -23,7 +23,12 @@ const SideNavbar = ({ isActive, setActive, loginUser }) => {
         <div className="flex justify-center items-center lg:mr-10">
           <div>
             {loginUser && (
-              <div className="flex  flex-col">
+              <div className="flex flex-col">
+                <div className="text-[10px] lg:text-[20px] flex pt-2 items-center gap-5">
+                  <h1 className="">{loginUser.mobileNumber}</h1> |
+                  <h1 className="">{loginUser.balance}tk</h1> |
+                  <h1 className="">{loginUser.email}</h1>
+                </div>
                 <div className="text-[10px] lg:text-[20px] flex pt-2 items-center gap-5">
                   <h1 className="">{loginUser.role}</h1> |
                   <h1 className="">{loginUser.name}</h1>
@@ -89,8 +94,6 @@ const SideNavbar = ({ isActive, setActive, loginUser }) => {
 
                     <span className="mx-4 font-medium">Home</span>
                   </NavLink>
-
-                  
                 </>
               ) : (
                 ""
@@ -196,17 +199,19 @@ const SideNavbar = ({ isActive, setActive, loginUser }) => {
                       alt=""
                     />
 
-                    <span className="mx-4 font-medium">Transactions History</span>
+                    <span className="mx-4 font-medium">
+                      Transactions History
+                    </span>
                   </NavLink>
                 </>
               ) : (
                 ""
               )}
-              {loginUser.role === "TaskCreator" ? (
+              {loginUser.role === "agent" ? (
                 <>
                   {/* Home */}
                   <NavLink
-                    to="taskCreator-home"
+                    to="manage-cashin"
                     end
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-200 rounded-lg   hover:text-gray-700 ${
@@ -223,10 +228,10 @@ const SideNavbar = ({ isActive, setActive, loginUser }) => {
                       alt=""
                     />
 
-                    <span className="mx-4 font-medium">Home</span>
+                    <span className="mx-4 font-medium">Manage CashIn</span>
                   </NavLink>
                   <NavLink
-                    to="addNewTask"
+                    to="balance-inquiry"
                     end
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-200 rounded-lg   hover:text-gray-700 ${
@@ -243,10 +248,10 @@ const SideNavbar = ({ isActive, setActive, loginUser }) => {
                       alt=""
                     />
 
-                    <span className="mx-4 font-medium">Add newTasks</span>
+                    <span className="mx-4 font-medium">Check Balance</span>
                   </NavLink>
                   <NavLink
-                    to="my-listings"
+                    to="transactions-history"
                     end
                     className={({ isActive }) =>
                       `flex items-center px-3 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-200 rounded-lg   hover:text-gray-700 ${
@@ -263,47 +268,9 @@ const SideNavbar = ({ isActive, setActive, loginUser }) => {
                       alt=""
                     />
 
-                    <span className="mx-4 font-medium">MyTask’s</span>
-                  </NavLink>
-                  <NavLink
-                    to="purchase-coin"
-                    end
-                    className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-200 rounded-lg   hover:text-gray-700 ${
-                        isActive
-                          ? "bg-gray-200 rounded-lg  text-gray-700"
-                          : "text-black"
-                      }`
-                    }
-                  >
-                    {/* <PiCoins className="w-5 h-5" /> */}
-                    <img
-                      className="w-7 h-7"
-                      src="https://i.ibb.co/K0w0SRf/coin-icon-coin-thin-line-icon-101027460-removebg-preview.png"
-                      alt=""
-                    />
-
-                    <span className="mx-4 font-medium">Purchase Coin</span>
-                  </NavLink>
-                  <NavLink
-                    to="payment-history"
-                    end
-                    className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-200 rounded-lg   hover:text-gray-700 ${
-                        isActive
-                          ? "bg-gray-200 rounded-lg  text-gray-700"
-                          : "text-black"
-                      }`
-                    }
-                  >
-                    {/* <HiOutlineCurrencyDollar className="w-5 h-5" /> */}
-                    <img
-                      className="w-7 h-7"
-                      src="https://i.ibb.co/2KL6XNk/4827568.png"
-                      alt=""
-                    />
-
-                    <span className="mx-4 font-medium">Payment history</span>
+                    <span className="mx-4 font-medium">
+                      Transactions History
+                    </span>
                   </NavLink>
                 </>
               ) : (

@@ -1,15 +1,17 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import useAuth from '../../../Hook/useAuth';
 
 const TransactionHistory = () => {
     const [transactions, setTransactions] = useState([]);
     const [error, setError] = useState(null);
+    const {auth} = useAuth();
 
     useEffect(() => {
         const fetchTransactions = async () => {
             const token = localStorage.getItem('token');
             try {
-                const response = await axios.get('http://localhost:5000/transactions', {
+                const response = await axios.get(`http://localhost:5000/user-transactions/${auth.mobileNumber}`, {
                     headers: { Authorization: token }
                 });
                 setTransactions(response.data.transactions);
@@ -21,15 +23,16 @@ const TransactionHistory = () => {
 
         fetchTransactions();
     }, []);
+    console.log("---------",transactions)
 
     return (
-        <div>
-            <h2>Transaction History</h2>
+        <div className='h-screen flex flex-col items-center justify-center'>
+            <h2 className='text-2xl font-semibold mb-5'>Transaction History</h2>
             {error && <p>{error}</p>}
             <ul>
                 {transactions.map(transaction => (
                     <li key={transaction._id}>
-                        {transaction.date}: {transaction.type} of {transaction.amount} Taka
+                        {transaction.timestamp}: {transaction.type} of {transaction.amount} Taka
                     </li>
                 ))}
             </ul>

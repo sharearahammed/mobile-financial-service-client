@@ -1,16 +1,20 @@
 import axios from 'axios';
 import { useState } from 'react';
+import useAuth from '../../../Hook/useAuth';
 
 const CashInRequest = () => {
     const [agentMobile, setAgentMobile] = useState('');
     const [amount, setAmount] = useState('');
     const [message, setMessage] = useState('');
+    const {auth} = useAuth()
 
     const handleCashInRequest = async (e) => {
         e.preventDefault();
         const token = localStorage.getItem('token');
         try {
             const response = await axios.post('http://localhost:5000/cash-in-request', {
+                agent_email:auth.email,
+                agent_mobileNumber:auth.mobileNumber,
                 agentMobile,
                 amount: parseFloat(amount),
             }, {

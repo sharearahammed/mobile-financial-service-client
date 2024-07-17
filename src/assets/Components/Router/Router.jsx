@@ -12,6 +12,7 @@ import CashOut from "../Dashboard/UserDashboard/CashOut/CashOut";
 import CashInRequest from "../Dashboard/UserDashboard/CashInRequest/CashInRequest";
 import BalanceInquiry from "../Dashboard/UserDashboard/CheckBalance/BalanceInquiry";
 import TransactionHistory from "../Dashboard/UserDashboard/TransactionHistory/TransactionHistory";
+import ManageCashIn from "../Dashboard/AgentDashboard/ManageCashIn";
 
 const router = createBrowserRouter([
     {
@@ -70,6 +71,12 @@ const router = createBrowserRouter([
             path:"transactions-history",
             element:<PrivateRoute>
               <TransactionHistory/>
+            </PrivateRoute>
+          },
+          {
+            path:"manage-cashin",
+            element:<PrivateRoute>
+              <ManageCashIn/>
             </PrivateRoute>
           }
         ]
