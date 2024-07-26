@@ -12,7 +12,7 @@ const CashInRequest = () => {
         e.preventDefault();
         const token = localStorage.getItem('token');
         try {
-            const response = await axios.post('http://localhost:5000/cash-in-request', {
+            const response = await axios.post('https://mobile-financial-server.vercel.app/cash-in-request', {
                 agent_email:auth.email,
                 agent_mobileNumber:auth.mobileNumber,
                 agentMobile,

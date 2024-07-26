@@ -14,7 +14,7 @@ const ManageCashIn = () => {
       const token = localStorage.getItem("token");
       try {
         const response = await axios.get(
-          "http://localhost:5000/cash-in-requests",
+          "https://mobile-financial-server.vercel.app/cash-in-requests",
           {
             headers: { Authorization: token },
           }
@@ -33,7 +33,7 @@ const ManageCashIn = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.post(
-        "http://localhost:5000/approve-cash-in",
+        "https://mobile-financial-server.vercel.app/approve-cash-in",
         { 
             agent_email:auth.email,
             agent_mobileNumber:auth.mobileNumber,

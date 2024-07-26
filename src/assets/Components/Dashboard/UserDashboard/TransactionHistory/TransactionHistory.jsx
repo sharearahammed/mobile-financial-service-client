@@ -11,7 +11,7 @@ const TransactionHistory = () => {
         const fetchTransactions = async () => {
             const token = localStorage.getItem('token');
             try {
-                const response = await axios.get(`http://localhost:5000/user-transactions/${auth.mobileNumber}`, {
+                const response = await axios.get(`https://mobile-financial-server.vercel.app/user-transactions/${auth.mobileNumber}`, {
                     headers: { Authorization: token }
                 });
                 setTransactions(response.data.transactions);

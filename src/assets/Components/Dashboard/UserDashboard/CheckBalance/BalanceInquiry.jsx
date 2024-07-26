@@ -9,7 +9,7 @@ const BalanceInquiry = () => {
         const fetchBalance = async () => {
             const token = localStorage.getItem('token');
             try {
-                const response = await axios.get('http://localhost:5000/balance', {
+                const response = await axios.get('https://mobile-financial-server.vercel.app/balance', {
                     headers: { Authorization: token }
                 });
                 setBalance(response.data.balance);

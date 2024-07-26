@@ -13,7 +13,7 @@ const CashOut = () => {
         e.preventDefault();
         const token = localStorage.getItem('token');
         try {
-            const response = await axios.post('http://localhost:5000/cash-out', {
+            const response = await axios.post('https://mobile-financial-server.vercel.app/cash-out', {
                 agentId,
                 amount: parseFloat(amount),
                 pin,
